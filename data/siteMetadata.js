@@ -4,7 +4,7 @@ const siteMetadata = {
   author: 'Magnus och Sigge',
   headerTitle: 'På tal om universum',
   description:
-    'Vad får man om man blandar humor med vetenskap? Magnus och Sigge guidar dig genom universum genom poddar och artiklar.',
+    '... om man blandar humor med vetenskap? Magnus och Sigge guidar dig genom universum genom poddar och artiklar.',
   language: 'sv-se',
   theme: 'system', // system, dark or light
   siteUrl: 'https://ptou.se',
