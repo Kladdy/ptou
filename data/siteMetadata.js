@@ -3,13 +3,14 @@ const siteMetadata = {
   title: 'På tal om universum',
   author: 'Magnus och Sigge',
   headerTitle: 'På tal om universum',
-  description: 'Vad får man om man blandar humor med vetenskap? Magnus och Sigge guidar dig genom universum genom poddar och artiklar.',
+  description:
+    'Vad får man om man blandar humor med vetenskap? Magnus och Sigge guidar dig genom universum genom poddar och artiklar.',
   language: 'sv-se',
   theme: 'system', // system, dark or light
   siteUrl: 'https://ptou.se',
   siteRepo: 'https://github.com/Kladdy/ptou',
-  siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
-  socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
+  siteLogo: `${process.env.BASE_PATH || ''}/static/images/ptou_round_icon_v1.png`,
+  socialBanner: `${process.env.BASE_PATH || ''}/static/images/ptou_social_banner_v1.png`,
   // mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'example@example.com',
   // github: 'https://github.com',
