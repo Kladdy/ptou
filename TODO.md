@@ -1,8 +1,7 @@
 # TODO
 
 - `data/siteMetadata.js`:
-  - `analytics`
   - `newsletter` - Kommer in senare, inget vi ska ha just nu
-  - `comments`
+  - `facebook`, `youtube`, även andra länkar (Spotify, Apple Podcasts, ...)
 - Sökmotor
-  - Google
+  - Google Search Console
