@@ -32,9 +32,8 @@ const Header = () => {
             />
           </div>
           {typeof siteMetadata.headerTitle === 'string' ? (
-            <div
-              className={`hidden h-6 text-2xl sm:block dark:text-[#fee5b0] ${CarosSoftHeavy.className}`}
-            >
+            // dark:text-[#fee5b0] for PTOU font color
+            <div className={`hidden h-6 text-2xl sm:block ${CarosSoftHeavy.className}`}>
               {siteMetadata.headerTitle}
             </div>
           ) : (
