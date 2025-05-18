@@ -8,13 +8,6 @@ import Image from 'next/image'
 const MAX_DISPLAY = 5
 
 export default function Home({ posts }) {
-  console.log(
-    'wow...',
-    process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
-    process.env.NEXT_UMAMI_ID,
-    process.env.NEXT_PUBLIC_GISCUS_REPO
-  )
-
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
