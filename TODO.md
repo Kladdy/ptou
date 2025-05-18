@@ -2,8 +2,7 @@
 
 - `data/siteMetadata.js`:
   - `analytics`
-  - `newsletter`
+  - `newsletter` - Kommer in senare, inget vi ska ha just nu
   - `comments`
-  - `search`
 - Sökmotor
   - Google
