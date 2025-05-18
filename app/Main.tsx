@@ -22,7 +22,7 @@ export default function Home({ posts }) {
           />
 
           <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
-            Vad får man...
+            Vad får man... {process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID}
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             {siteMetadata.description}
