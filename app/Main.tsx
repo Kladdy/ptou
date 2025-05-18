@@ -8,6 +8,13 @@ import Image from 'next/image'
 const MAX_DISPLAY = 5
 
 export default function Home({ posts }) {
+  console.log(
+    'wow...',
+    process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
+    process.env.NEXT_UMAMI_ID,
+    process.env.NEXT_PUBLIC_GISCUS_REPO
+  )
+
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -22,7 +29,7 @@ export default function Home({ posts }) {
           />
 
           <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
-            Vad får man... {process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID}
+            Vad får man...
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             {siteMetadata.description}
