@@ -5,7 +5,7 @@ import { useState } from 'react'
 import siteMetadata from '@/data/siteMetadata'
 
 export default function Comments({ slug }: { slug: string }) {
-  const [loadComments, setLoadComments] = useState(false)
+  const [loadComments, setLoadComments] = useState(true)
   console.log(
     'wow...',
     process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
