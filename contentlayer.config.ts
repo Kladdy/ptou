@@ -44,18 +44,9 @@ const icon = fromHtmlIsomorphic(
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
-  slug: {
-    type: 'string',
-    resolve: (doc) => doc._raw.flattenedPath.replace(/^.+?(\/)/, ''),
-  },
-  path: {
-    type: 'string',
-    resolve: (doc) => doc._raw.flattenedPath,
-  },
-  filePath: {
-    type: 'string',
-    resolve: (doc) => doc._raw.sourceFilePath,
-  },
+  slug: { type: 'string', resolve: (doc) => doc._raw.flattenedPath.replace(/^.+?(\/)/, '') },
+  path: { type: 'string', resolve: (doc) => doc._raw.flattenedPath },
+  filePath: { type: 'string', resolve: (doc) => doc._raw.sourceFilePath },
   toc: { type: 'json', resolve: (doc) => extractTocHeadings(doc.body.raw) },
 }
 
@@ -158,7 +149,7 @@ export default makeSource({
       remarkCodeTitles,
       remarkMath,
       remarkImgToJsx,
-      remarkAlert,
+      [remarkAlert, { legacyTitle: true }],
     ],
     rehypePlugins: [
       rehypeSlug,
@@ -166,9 +157,7 @@ export default makeSource({
         rehypeAutolinkHeadings,
         {
           behavior: 'prepend',
-          headingProperties: {
-            className: ['content-header'],
-          },
+          headingProperties: { className: ['content-header'] },
           content: icon,
         },
       ],
