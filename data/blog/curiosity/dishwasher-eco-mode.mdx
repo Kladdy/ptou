@@ -1,0 +1,74 @@
+---
+title: 'Introducing Tailwind Nextjs Starter Blog' # TODO
+date: '2025-05-27'
+lastmod: '2025-05-27'
+tags: ['data', 'kuriosa']
+draft: true
+summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'  # TODO
+images: ['/static/images/canada/mountains.jpg', '/static/images/canada/toronto.jpg'] # TODO
+authors: ['default']
+---
+
+{/* TODO: Spell check */}
+
+# En förvirrande vitvara
+
+Jag ska gå rakt på sak - visst känns det konstigt att det "snabba" läget på en diskmaskin skulle vara mindre energieffektivt än det långsammare? På vår diskmaskin hemma så tar det vanliga *Eco*-läget drygt 3 timmar att köra, men om man klickar på "snabb"-knappen så tar diskprogrammet ynka drygt 1 timme. Ett kortare program borde ju förbrukar mindre energi, visst? Varför kör man inte alltid bara det kortare programmet i så fall?
+
+Som fysiker kan man vara intresserad av att mäta saker, och här kändes det som ett perfekt tillfälle att ta fram den inre experimentalisten. Beväpnad med en elmätare kopplad till det smarta hemmet skred jag till handling - jag skulle lista ut varför det är bättre att köra det långa programmet jämfört med det korta.
+
+> [!WARNING]
+> Ett missförstånd man kan ha kring diskmaskiner är att de fylls upp till fullo av vatten under diskprogrammet - men det är inte sant, som vi kommer att se senare. Huruvida det är ett vanligt missförstånd eller inte kan jag inte kommentera, men åtminstone 50&nbsp;% av *På tal om universum*-gänget trodde att det var så fram till nyligen, men jag nämner inga namn 👀
+
+# Vad är effekt och energi?
+
+Utan att mäta kan man inte veta - och det är exakt därför jag slängde på en [INSPELNING](https://www.ikea.com/se/sv/p/inspelning-stickpropp-smart-energimaetare-00569836/) från IKEA (inte sponsrat inlägg (ännu...?)) kopplad till [Home Assistant](https://www.home-assistant.io), för att kunna samla in data över förbrukad elektrisk effekt över tid. I grundskolan får man lära sig att elektrisk effekt, som kan betecknas med symbolen $P$, beräknas enligt
+
+$$P=U \cdot I$$
+
+där $U$ och $I$ är spänningen respektive strömmen. I våra vägguttag i Sverige är spänningen ungefär $U=230~V$ (enheten Volt, $V$), vilket gör att om det är en elektrisk ström på $I=1~A$ (enheten Ampere, $A$) så kommer apparaten man mäter att förbruka en effekt på
+
+$$P=U \cdot I=230~V \cdot 1~A=230~W$$
+
+där enheten för effekten $P$ är Watt, $W$. Om apparaten är påslagen med denna effekt under 1 timmes tid så har man förbrukat energin $230~Wh$, eller i mer vardagliga enheter $0,23~kWh$ (kilowatttimme). Det är denna siffra som sedan landar på elräkningen. Men det är inte alltid så enkelt som att en apparat drar samma effekt hela tiden, vilket vi kommer se nu.
+
+# Data
+
+{/* 
+
+<div className="relative">
+  <img
+    src="/static/images/posts/dishwasher-eco-mode/plots/light/power_vs_time_sensor.elmatare_diskmaskin_power_1.svg"
+    alt="Power vs Time - Light"
+    className="block dark:hidden"
+  />
+  <img
+    src="/static/images/posts/dishwasher-eco-mode/plots/dark/power_vs_time_sensor.elmatare_diskmaskin_power_1.svg"
+    alt="Power vs Time - Dark"
+    className="hidden dark:block"
+  />
+</div> */}
+
+{/* Dark mode image */}
+{/* <div className="relative w-full my-6 mx-auto rounded">
+  <img
+    src="/static/images/posts/dishwasher-eco-mode/plots/light/power_vs_time_sensor.elmatare_diskmaskin_power_1.svg"
+    alt="Effekt över tid (ljus tema)"
+    className="block dark:hidden w-full rounded"
+  />
+  <img
+    src="/static/images/posts/dishwasher-eco-mode/plots/dark/power_vs_time_sensor.elmatare_diskmaskin_power_1.svg"
+    alt="Effekt över tid (mörkt tema)"
+    className="hidden dark:block w-full rounded"
+  />
+</div> */}
+
+<DarkModeImage
+  lightSrc="/static/images/posts/dishwasher-eco-mode/plots/light/power_vs_time_sensor.elmatare_diskmaskin_power_1.svg"
+  darkSrc="/static/images/posts/dishwasher-eco-mode/plots/dark/power_vs_time_sensor.elmatare_diskmaskin_power_1.svg"
+  alt="Effekt över tid"
+/>
+
+[^1]
+
+[^1]: https://github.com/Kladdy/dishwasher-eco-mode.git
