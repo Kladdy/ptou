@@ -37,7 +37,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
       <nav className="flex justify-between">
         {!prevPage && (
           <button className="cursor-auto disabled:opacity-50" disabled={!prevPage}>
-            Previous
+            Tidigare
           </button>
         )}
         {prevPage && (
@@ -45,20 +45,20 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
             href={currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`}
             rel="prev"
           >
-            Previous
+            Tidigare
           </Link>
         )}
         <span>
-          {currentPage} of {totalPages}
+          {currentPage} av {totalPages}
         </span>
         {!nextPage && (
           <button className="cursor-auto disabled:opacity-50" disabled={!nextPage}>
-            Next
+            Nästa
           </button>
         )}
         {nextPage && (
           <Link href={`/${basePath}/page/${currentPage + 1}`} rel="next">
-            Next
+            Nästa
           </Link>
         )}
       </nav>
@@ -112,7 +112,7 @@ export default function ListLayoutWithTags({
                         <Link
                           href={`/tags/${slug(t)}`}
                           className="hover:text-primary-500 dark:hover:text-primary-500 px-3 py-2 text-sm font-medium text-gray-500 uppercase dark:text-gray-300"
-                          aria-label={`View posts tagged ${t}`}
+                          aria-label={`Via artiklar med ämnet ${t}`}
                         >
                           {`${t} (${tagCounts[t]})`}
                         </Link>
@@ -131,7 +131,7 @@ export default function ListLayoutWithTags({
                   <li key={path} className="py-5">
                     <article className="flex flex-col space-y-2 xl:space-y-0">
                       <dl>
-                        <dt className="sr-only">Published on</dt>
+                        <dt className="sr-only">Publicerad</dt>
                         <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
                           <time dateTime={date} suppressHydrationWarning>
                             {formatDate(date, siteMetadata.locale)}

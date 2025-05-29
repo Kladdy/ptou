@@ -49,7 +49,7 @@ export default function Comments({ slug }: { slug: string }) {
       {loadComments ? (
         <CommentsComponent commentsConfig={commentsConfigWithDarkTheme} slug={slug} />
       ) : (
-        <button onClick={() => setLoadComments(true)}>Load Comments</button>
+        <button onClick={() => setLoadComments(true)}>Ladda kommentarer</button>
       )}
     </>
   )
