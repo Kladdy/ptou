@@ -16,7 +16,6 @@ const ThemeBasedImage = ({ lightSrc, darkSrc, alt, ...props }) => {
     return null
   }
 
-  console.log('ThemeBasedImage', { lightSrc, darkSrc, resolvedTheme })
   const src = resolvedTheme === 'dark' ? darkSrc : lightSrc
   return <img src={src} alt={alt} {...props} />
 }

@@ -20,8 +20,6 @@ export default function Comments({ slug }: { slug: string }) {
     return null
   }
 
-  console.log('Comments', { resolvedTheme })
-
   if (!siteMetadata.comments?.provider) {
     return null
   }
@@ -29,7 +27,6 @@ export default function Comments({ slug }: { slug: string }) {
   let commentsConfigWithDarkTheme = siteMetadata.comments
 
   if (siteMetadata.comments.provider === 'giscus' && siteMetadata.comments.giscusConfig) {
-    console.log('true')
     commentsConfigWithDarkTheme = {
       ...siteMetadata.comments,
       giscusConfig: {
@@ -40,8 +37,6 @@ export default function Comments({ slug }: { slug: string }) {
             : siteMetadata.comments.giscusConfig.theme,
       },
     }
-  } else {
-    console.log('false')
   }
 
   return (
