@@ -41,6 +41,7 @@ jobs:
           sed -i 's/No results for your search.../Inga resultat för din sökning…/g' node_modules/pliny/chunk-*.js || true
           sed -i 's/section: "Content"/section: "Innehåll"/g' node_modules/pliny/chunk-*.js || true
           sed -i 's/post\.date, "en-US"/post.date, "sv-SE"/g' node_modules/pliny/chunk-*.js || true
+          sed -i "s/'Footnotes'/'Fotnoter'/g" node_modules/mdast-util-to-hast/lib/footer.js || true
       - run: yarn build
         env:
           EXPORT: 1
