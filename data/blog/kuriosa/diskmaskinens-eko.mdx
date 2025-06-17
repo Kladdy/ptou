@@ -26,13 +26,17 @@ Utan att mäta kan man inte veta - och det är exakt därför jag slängde på e
 
 $$P=U \cdot I$$
 
-där $U$ och $I$ är spänningen respektive strömmen. I våra vägguttag i Sverige är spänningen ungefär $U=230~V$ (enheten Volt, $V$), vilket gör att om det är en elektrisk ström på $I=1~A$ (enheten Ampere, $A$) så kommer apparaten man mäter att förbruka en effekt på
+där $U$ och $I$ är spänningen respektive strömmen. I våra vägguttag i Sverige är spänningen ungefär $U=230~\text{V}$ (enheten Volt, V), vilket gör att om det är en elektrisk ström på $I=1~\text{A}$ (enheten Ampere, A) så kommer apparaten man mäter att förbruka en effekt på
 
-$$P=U \cdot I=230~V \cdot 1~A=230~W$$
+$$P=U \cdot I=230~\text{V} \cdot 1~\text{A}=230~\text{W}$$
 
-där enheten för effekten $P$ är Watt, $W$. Om apparaten är påslagen med denna effekt under 1 timmes tid så har man förbrukat energin $230~Wh$, eller i mer vardagliga enheter $0,23~kWh$ (kilowatttimme). Det är denna siffra som sedan landar på elräkningen. Men det är inte alltid så enkelt som att en apparat drar samma effekt hela tiden, vilket vi kommer se nu.
+där enheten för effekten $P$ är Watt, W. Om apparaten är påslagen med denna effekt under 1 timmes tid så har man förbrukat energin $230~\text{Wh}$, eller i mer vardagliga enheter 0,23~kWh (kilowatttimme). Det är denna siffra som sedan landar på elräkningen. Men det är inte alltid så enkelt som att en apparat drar samma effekt hela tiden, vilket vi kommer se nu.
 
 # Data
+
+Nedan visas en figur över den förbrukade elektriska effekten över tid, för två olika lägen på diskmaskinen: *eco*-läget och det *snabba eco*-läget. Eftersom diskmaskinen ibland drar väldigt mycket ström, och ibland drar väldigt lite ström, så har jag valt att rita figuren med en så kallad logaritmisk lodrät axel.
+
+I figuren finns det en antydan till att det *snabba eco*-har en väldigt hög effekt under i princip hela diskprogrammet, medan *eco*-läget förbrukar en del energi i början av programmet för att sedan 
 
 <ThemeBasedImage
   lightSrc="/static/images/posts/dishwasher-eco-mode/plots/light/power_vs_time_sensor.elmatare_diskmaskin_power_1.svg"
@@ -40,6 +44,6 @@ där enheten för effekten $P$ är Watt, $W$. Om apparaten är påslagen med den
   alt="Effekt över tid"
 />
 
-[^1]
+All kod som användes för analyserna i denna artikel finns att hämta på GitHub[^github_link].
 
-[^1]: https://github.com/Kladdy/dishwasher-eco-mode.git
+[^github_link]: https://github.com/Kladdy/dishwasher-eco-mode.git
