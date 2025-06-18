@@ -1,15 +1,13 @@
 ---
-title: 'Introducing Tailwind Nextjs Starter Blog' # TODO
-date: '2025-05-27'
-lastmod: '2025-05-27'
-tags: ['data', 'kuriosa']
+title: 'Diskmaskinen snackar goja - Hur kortare program gör dig ruinerad'
+date: '2025-06-19'
+lastmod: '2025-06-19'
+tags: ['data', 'kuriosa', 'elförbrukning', 'mätning']
 draft: true
-summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'  # TODO
-images: ['/static/images/canada/mountains.jpg', '/static/images/canada/toronto.jpg'] # TODO
+summary: 'Långt program, lägre elräkning? En liten elmätare, lite fysik och en diskmaskin som gärna bråkar med våra förutfattade meningar om energi - vad kan gå fel?'
+images: ['/static/images/posts/dishwasher-eco-mode/magnus_sees_dishwasher.png'] 
 authors: ['default']
 ---
-
-{/* TODO: Spell check */}
 
 # En förvirrande vitvara
 
@@ -20,29 +18,106 @@ Som fysiker kan man vara intresserad av att mäta saker, och här kändes det so
 > [!Important/Viktigt]
 > Ett missförstånd man kan ha kring diskmaskiner är att de fylls upp till fullo av vatten under diskprogrammet - men det är inte sant, som vi kommer att se senare. Huruvida det är ett vanligt missförstånd eller inte kan jag inte kommentera, men åtminstone 50&nbsp;% av *På tal om universum*-gänget trodde att det var så fram till nyligen, men jag nämner inga namn 👀
 
+<br />
+
 # Vad är effekt och energi?
 
 Utan att mäta kan man inte veta - och det är exakt därför jag slängde på en [INSPELNING](https://www.ikea.com/se/sv/p/inspelning-stickpropp-smart-energimaetare-00569836/) från IKEA (inte sponsrat inlägg (ännu...?)) kopplad till [Home Assistant](https://www.home-assistant.io), för att kunna samla in data över förbrukad elektrisk effekt över tid. I grundskolan får man lära sig att elektrisk effekt, som kan betecknas med symbolen $P$, beräknas enligt
 
-$$P=U \cdot I$$
+$$
+P=U \cdot I
+$$
 
 där $U$ och $I$ är spänningen respektive strömmen. I våra vägguttag i Sverige är spänningen ungefär $U=230~\text{V}$ (enheten Volt, V), vilket gör att om det är en elektrisk ström på $I=1~\text{A}$ (enheten Ampere, A) så kommer apparaten man mäter att förbruka en effekt på
 
-$$P=U \cdot I=230~\text{V} \cdot 1~\text{A}=230~\text{W}$$
+$$
+P=U \cdot I=230~\text{V} \cdot 1~\text{A}=230~\text{W}
+$$
 
 där enheten för effekten $P$ är Watt, W. Om apparaten är påslagen med denna effekt under 1 timmes tid så har man förbrukat energin $230~\text{Wh}$, eller i mer vardagliga enheter 0,23~kWh (kilowatttimme). Det är denna siffra som sedan landar på elräkningen. Men det är inte alltid så enkelt som att en apparat drar samma effekt hela tiden, vilket vi kommer se nu.
 
-# Data
+<br />
 
-Nedan visas en figur över den förbrukade elektriska effekten över tid, för två olika lägen på diskmaskinen: *eco*-läget och det *snabba eco*-läget. Eftersom diskmaskinen ibland drar väldigt mycket ström, och ibland drar väldigt lite ström, så har jag valt att rita figuren med en så kallad logaritmisk lodrät axel.
+# Okej, nog med teori. Jag vill se data!
 
-I figuren finns det en antydan till att det *snabba eco*-har en väldigt hög effekt under i princip hela diskprogrammet, medan *eco*-läget förbrukar en del energi i början av programmet för att sedan 
+Nedan visas en figur över den förbrukade elektriska effekten över tid, för två olika lägen på diskmaskinen: *eko*-läget och det *snabba eko*-läget.
+
+I figuren finns det en antydan till att det *snabba eko*-har en väldigt hög effekt under i princip hela diskprogrammet, medan *eko*-läget förbrukar en del energi i början av programmet för att sedan 
+
+<ThemeBasedImage
+  lightSrc="/static/images/posts/dishwasher-eco-mode/plots/light/power_vs_time_sensor.elmatare_diskmaskin_power_0.svg"
+  darkSrc="/static/images/posts/dishwasher-eco-mode/plots/dark/power_vs_time_sensor.elmatare_diskmaskin_power_0.svg"
+  alt="Effekt över tid, linjär y-axel"
+/>
+
+Eftersom diskmaskinen ibland drar väldigt mycket ström, och ibland drar väldigt lite ström, så kan det vara klokt att även rita graferna med en så kallad logaritmisk lodrät axel. Då är det lättare att se hur beteendet är även då effekten är väldigt låg. I figure nedan syns det att för *eko*-läget så går den in i något läge efter ungefär $2000~\text{s}$ där effekten varierar upp och ner under nästan två timmar, men effekten i sig är väldigt låg (någonstans omkring $20~\text{W}$). 
 
 <ThemeBasedImage
   lightSrc="/static/images/posts/dishwasher-eco-mode/plots/light/power_vs_time_sensor.elmatare_diskmaskin_power_1.svg"
   darkSrc="/static/images/posts/dishwasher-eco-mode/plots/dark/power_vs_time_sensor.elmatare_diskmaskin_power_1.svg"
-  alt="Effekt över tid"
+  alt="Effekt över tid, logaritmisk y-axel"
 />
+
+# Så vad är skillnaden?
+
+Egentligen är det inte vilken effekt som diskmaskinen drar för ett visst program är intressant. Det går att tänka på det i analogi med att köra bil - det är inte hur snabbt du kör som är intressant, utan hur långt du kommer. På samma sätt är det inte hur mycket effekt diskmaskinen drar som är intressant, utan hur mycket energi den förbrukar under hela diskprogrammet. Det är därför viktigt att räkna ut den totalt energiförbrukningen för varje program, vilket visades tidigare innebära att effekten multipliceras med tiden. 
+
+Nu är effekten dock inte konstant under hela diskprogrammet, utan varierar över tid. Istället kan vi räkna ut energiförbrukningen genom att multiplicera effekten vid varje tidpunkt, med tiden mellan varje mätning. Detta kallas på matematikens språk för att beräkna en integral, och energin $E$ skulle i integralform skrivas som
+
+$$
+E = \int_{t_0}^{t_1} P(t) \, dt
+$$
+
+där $P(t)$ är den elektriska effekten vid tidpunkten $t$, och $t_0$ och $t_1$ är start- respektive sluttiden för diskprogrammet. 
+
+> [!Tip/Kuriosa]
+> En sådan integral skulle enligt min [favoritmatematiklärare](https://www.wehlou.com/hania/) på universitetet kallas för en *typisk Riemann-konstruktion*. Hania berättade för oss på ett entusiastiskt sätt att att vi skulle stöta på dessa flera gånger under resten av våra liv, och det kan jag ju nu intyga!
+
+Denna integral kan beräknas numeriskt för $t_0=0~\text{s}$ och $t_1$ från start till slutet av diskprogrammet, vilket ger oss den totala energiförbrukning för varje program under programmets lopp. I figuren nedan visas denna energiförbrukningen för de två programmen, *eko*-läget och det *snabba eko*-läget.
+
+<ThemeBasedImage
+  lightSrc="/static/images/posts/dishwasher-eco-mode/plots/light/energy_vs_time_sensor.elmatare_diskmaskin_power.sv"
+  darkSrc="/static/images/posts/dishwasher-eco-mode/plots/dark/energy_vs_time_sensor.elmatare_diskmaskin_power.svg"
+  alt="Energi över tid"
+/>
+
+I figuren kan det avläsas att *eko*-läget förbrukar en elektrisk energi på ungefär $0.71~\text{kWh}$, medan det *snabba eko*-läget förbrukar ungefär $1.35~\text{kWh}$. Med andra ord - om man under ett år kör 100 diskprogram, och om man kör det *snabba eko*-läget istället för *eko*-läget, kommer man att förbruka ungefär $64~\text{kWh}$ mer energi, helt i onödan. Om man räknar med ett representativt elpris för en villa i Sverige under 2024, som ligger på $2~\text{kr/kWh}$[^electricity_price_2024], så kommer det att kosta ungefär $130~\text{kr}$ mer per år att köra det *snabba eko*-läget istället för *eko*-läget. 
+
+[^electricity_price_2024]: Normal elförbrukning och elkostnad för villa, *Konsumenternas Energimarknadsbyrå*, https://www.energimarknadsbyran.se/el/dina-avtal-och-kostnader/elkostnader/elforbrukning/normal-elforbrukning-och-elkostnad-for-villa/ (lästes 2025-06-18)
+
+Om man räknar med att det finns ungefär 1 miljon sådana diskmaskinsanvändare i Sverige och att alla skulle använda det *snabba eko*-läget istället för *eko*-läget, så innebär det att svenska hushåll skulle slösa ungefär $130~\text{Mkr}$ per år. Det är en hel del pengar, och det är inte ens medräknat den extra miljöpåverkan som det innebär att använda mer energi. Så vi får hoppas att alla där ute i stugorna faktiskt väljer att köra det vanliga *eko*-läget istället för det *snabba eko*-läget.
+
+<br />
+
+# Aha, men du har inte tänk på vattnet...
+
+Jodå, och jag ska förklara varför *eko*-läget visar sig använda en mindre mängd vatten än *snabba eko*-läget. Om vi kollar i figurerna ovan så kan man anta att en stor del av effekten ovan går åt att värma upp vattnet som används för diskmaskinen. En liten del av effekten går åt att driva pumpen som cirkulerar vattnet samt elektroniken i diskmaskinen, men denna är försumbar i sammanhanget. Att den är försumbar kan ses i det logaritmiska figuren då pumpen och all elektronik under de två timmarna som *eko*-läget körs, efter att vattnet är uppvärmt, drar en effekt på ungefär $20~\text{W}$, vilket är mycket lägre än den effekt som går åt att värma upp vattnet, som är över $2000~\text{W}$.
+
+Mängden energi som går åt att värma upp en vissa massa $m$ av en substans kan beräknas med hjälp av den specifika värmekapaciteten av materialet, som betecknas med $c$. Ekvationen som lyder är
+
+$$
+E = cm\Delta T
+$$
+
+där $\Delta T$ är temperaturförändringen vid uppvärmningen i grader Celsius. För vatten är den specifika värmekapaciteten ungefär $c=4.18~\text{kJ/(kg\,°C)}$[^specific_heat_wiki]. Jag mätte temperaturen för kallvatten hemma i kranen, och den landade på ungefär $T_0=10~\text{°C}$. Vattnet i diskmaskinen värms upp till ungefär $T_1=50~\text{°C}$ för båda programmen enligt programväljaren, vilket ger en temperaturförändring på $\Delta T = T_1 - T_0 = 50~\text{°C} - 10~\text{°C} = 40~\text{°C}$.
+
+[^specific_heat_wiki]: Specific heat capacity, *Wikipedia*, https://en.wikipedia.org/wiki/Specific_heat_capacity (lästes 2025-06-18)
+
+Nu har vi allt som behövs för att räkna ur hur mycket massa vatten som diskmaskinen använder för respektive program. Genom att göra lite matematisk gymnastik kan ekvationen ovan skrivas in till
+
+$$
+m = \frac{E}{c\Delta T}
+$$
+
+Genom att sätta in siffror i detta  får vi ut att *eko*-läget använder ungefär $m_{\text{eko}} \approx 15\text{kg}$ vatten, medan det *snabba eko*-läget använder ungefär $m_{\text{snabb}} \approx 29~\text{kg}$ vatten. Återigen kanske det inte är gigantiska skillnader för varje diskning, men om man räknar ihop alla diskningar under ett år, och alla hushåll i Sverige, så blir det en hel del vatten som sparas om *eko*-läget används istället för *snabba eko*-läget. Notera att dessa siffror troligtvis är överskattade något, då det antogs att all energi som förbrukades gick åt till att värma upp vattnet, vilket i verkligheten inte är helt sant.
+
+# Slutsatser
+
+Det går mer relativt enkla metoder - både när det gäller hårdvara och mjukvara - att förstå sig på hur ens prylar hemma fungerar. I detta fall så var det en enkel elmätare kopplad till ett smart hem-system som gjorde att jag kunde mäta hur mycket energi som diskmaskinen förbrukade under olika program. Det visade sig att det *snabba eko*-läget förbrukar nästan dubbelt så mycket energi som *eko*-läget, även förbrukar ungefär dubbelt så mycket vatten. 
+
+Jag vågar inte ge mig på att köra det vanliga *icke-eko*-läget, dels för att vi aldrig kör det läget här hemma, men också för att enligt programväljaren ska resultera i att temperaturen landar någonstans mellan $45~\text{°C}$ och $65~\text{°C}$, vilket gör att det är svårare att räkna ut hur mycket vatten som går åt utan att öppna upp diskmaskinen under programmets gång och mäta temperaturen. Vi vet ju alla att det är en dålig idé att göra, tänk om diskmaskinen är helt fylld med vatten!? Så kan det, som tidigare nämnt, vara enligt en av *På tal om universum*-författarna, men jag nämner inga namn... 🤯
+
+Men den ursprungliga frågan kvarstår - varför är det så att *eko*-läget är mer energieffektivt än *snabba eko*-läget? Min tolkning av resultaten i denna artikel är enligt följande. Det går att göra avvägning mellan att diska under en kort tid med mycket vatten, eller diska under en längre tid med mindre vatten. Eftersom energiförbrukningen är kopplad mestadels till hur mycket vatten som måste värmas upp kommer det *snabba eko*-läget att förbruka mer energi än *eko*-läget, trots att det tar kortare tid. Nu har du blivit lite klokare - och kan imponera på alla under nästa fest med dina diskmaskinskunskaper! 
 
 All kod som användes för analyserna i denna artikel finns att hämta på GitHub[^github_link].
 
