@@ -20,25 +20,25 @@ const Header = () => {
   return (
     <header className={headerClass}>
       <Link href="/" aria-label={siteMetadata.headerTitle}>
-        <div className="flex items-center justify-between">
-          <div className="mr-3">
+        <div className="flex items-center">
+          <div className="mr-3 flex flex-shrink-0 items-center">
             <Image
               src="/static/images/ptou_round_icon_v1.png"
               alt="På tal om universum"
               width={50}
               height={50}
-              className="mt-1.5"
               priority
             />
           </div>
-          {typeof siteMetadata.headerTitle === 'string' ? (
-            // dark:text-[#fee5b0] for PTOU font color
-            <div className={`hidden h-6 text-2xl sm:block ${CarosSoftHeavy.className}`}>
-              {siteMetadata.headerTitle}
-            </div>
-          ) : (
-            siteMetadata.headerTitle
-          )}
+          <div className="flex min-h-[50px] items-center">
+            {typeof siteMetadata.headerTitle === 'string' ? (
+              <div className={`text-2xl ${CarosSoftHeavy.className}`}>
+                {siteMetadata.headerTitle}
+              </div>
+            ) : (
+              siteMetadata.headerTitle
+            )}
+          </div>
         </div>
       </Link>
       <div className="flex items-center space-x-4 leading-5 sm:-mr-6 sm:space-x-6">
