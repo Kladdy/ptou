@@ -2,7 +2,7 @@
 const siteMetadata = {
   title: 'På tal om universum',
   author: 'Magnus och Sigge',
-  headerTitle: 'PÅ TAL OM UNIVERSUM',
+  headerTitle: 'PÅ\u00A0TAL\u00A0OM UNIVERSUM',
   description:
     '... om man blandar humor med vetenskap? Magnus och Sigge guidar dig genom universum genom poddar och artiklar.',
   language: 'sv-se',
