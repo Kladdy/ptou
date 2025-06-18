@@ -17,7 +17,7 @@ const ThemeBasedImage = ({ lightSrc, darkSrc, alt, ...props }) => {
   }
 
   const src = resolvedTheme === 'dark' ? darkSrc : lightSrc
-  return <img src={src} alt={alt} {...props} />
+  return <img className="mx-auto" src={src} alt={alt} {...props} />
 }
 
 export default ThemeBasedImage
