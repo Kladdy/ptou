@@ -42,7 +42,7 @@ där enheten för effekten $P$ är Watt, $\text{W}$. Om apparaten är påslagen 
 
 Nedan visas en figur över den förbrukade elektriska effekten över tid, för två olika lägen på diskmaskinen: *eko*-läget och det *snabba eko*-läget.
 
-I figuren finns det en antydan till att det *snabba eko*-har en väldigt hög effekt under i princip hela diskprogrammet, medan *eko*-läget förbrukar en del energi i början av programmet för att sedan 
+I figuren finns det en antydan till att det *snabba eko*-har en väldigt hög effekt under i princip hela diskprogrammet, medan *eko*-läget förbrukar en del energi i början av programmet för att sedan förbrukar enbart en mycket liten effekt under en stor del av programmet. Det är också tydligt att *eko*-läget tar mycket längre tid än det *snabba eko*-läget, vilket är väntat (det hör man ju på namnet 😉).
 
 <ThemeBasedImage
   lightSrc="/static/images/posts/dishwasher-eco-mode/plots/light/power_vs_time_sensor.elmatare_diskmaskin_power_0.svg"
@@ -50,7 +50,7 @@ I figuren finns det en antydan till att det *snabba eko*-har en väldigt hög ef
   alt="Effekt över tid, linjär y-axel"
 />
 
-Eftersom diskmaskinen ibland drar väldigt mycket ström, och ibland drar väldigt lite ström, så kan det vara klokt att även rita graferna med en så kallad logaritmisk lodrät axel. Då är det lättare att se hur beteendet är även då effekten är väldigt låg. I figure nedan syns det att för *eko*-läget så går den in i något läge efter ungefär $2000~\text{s}$ där effekten varierar upp och ner under nästan två timmar, men effekten i sig är väldigt låg (någonstans omkring $20~\text{W}$). 
+Eftersom diskmaskinen ibland drar väldigt mycket ström, och ibland drar väldigt lite ström, så kan det vara klokt att även rita graferna med en så kallad logaritmisk lodrät axel. Då är det lättare att se hur beteendet är även då effekten är väldigt låg. I figuren nedan syns det att för *eko*-läget så går den in en någon fas efter ungefär $2000~\text{s}$ där effekten varierar upp och ner under nästan två timmar, men effekten i sig är väldigt låg (någonstans omkring $20~\text{W}$). 
 
 <ThemeBasedImage
   lightSrc="/static/images/posts/dishwasher-eco-mode/plots/light/power_vs_time_sensor.elmatare_diskmaskin_power_1.svg"
@@ -68,7 +68,7 @@ $$
 E = \int_{t_0}^{t_1} P(t) \, dt
 $$
 
-där $P(t)$ är den elektriska effekten vid tidpunkten $t$, och $t_0$ och $t_1$ är start- respektive sluttiden för diskprogrammet. 
+där $P(t)$ är den elektriska effekten vid tidpunkten $t$, och $t_0$ samt $t_1$ är godtyckliga tider under programet som man vill beräkna den förbrukade energin mellan. 
 
 > [!Tip/Kuriosa]
 > En sådan integral skulle enligt min [favoritmatematiklärare](https://www.wehlou.com/hania/) på universitetet kallas för en *typisk Riemann-konstruktion*. Hania berättade för oss på ett entusiastiskt sätt att att vi skulle stöta på dessa flera gånger under resten av våra liv, och det kan jag ju nu intyga!
@@ -111,13 +111,21 @@ $$
 
 Genom att sätta in siffror i detta  får vi ut att *eko*-läget använder ungefär $m_{\text{eko}} \approx 15\text{kg}$ vatten, medan det *snabba eko*-läget använder ungefär $m_{\text{snabb}} \approx 29~\text{kg}$ vatten. Återigen kanske det inte är gigantiska skillnader för varje diskning, men om man räknar ihop alla diskningar under ett år, och alla hushåll i Sverige, så blir det en hel del vatten som sparas om *eko*-läget används istället för *snabba eko*-läget. Notera att dessa siffror troligtvis är överskattade något, då det antogs att all energi som förbrukades gick åt till att värma upp vattnet, vilket i verkligheten inte är helt sant.
 
+<br />
+
+{/* <Image alt="Magnus ser en diskmaskin" src="/static/images/posts/dishwasher-eco-mode/magnus_sees_dishwasher.png" width={1536} height={1024} /> */}
+
+{/* same image as above but rounded corners */}
+
+<Image alt="Magnus ser en diskmaskin" src="/static/images/posts/dishwasher-eco-mode/magnus_sees_dishwasher.png" width={1536} height={1024} className="rounded-2xl" />
+
 # Slutsatser
 
-Det går mer relativt enkla metoder - både när det gäller hårdvara och mjukvara - att förstå sig på hur ens prylar hemma fungerar. I detta fall så var det en enkel elmätare kopplad till ett smart hem-system som gjorde att jag kunde mäta hur mycket energi som diskmaskinen förbrukade under olika program. Det visade sig att det *snabba eko*-läget förbrukar nästan dubbelt så mycket energi som *eko*-läget, även förbrukar ungefär dubbelt så mycket vatten. 
+Det går mer relativt enkla metoder - både när det gäller hårdvara och mjukvara - att förstå sig på hur ens prylar hemma fungerar. I detta fall så var det en enkel elmätare kopplad till ett smart hem-system som gjorde att jag kunde mäta hur mycket energi som diskmaskinen förbrukade under olika program. Det visade sig att det *snabba eko*-läget förbrukar nästan dubbelt så mycket energi som *eko*-läget, och förbrukar även ungefär dubbelt så mycket vatten. 
 
 Jag vågar inte ge mig på att köra det vanliga *icke-eko*-läget, dels för att vi aldrig kör det läget här hemma, men också för att enligt programväljaren ska resultera i att temperaturen landar någonstans mellan $45~\text{°C}$ och $65~\text{°C}$, vilket gör att det är svårare att räkna ut hur mycket vatten som går åt utan att öppna upp diskmaskinen under programmets gång och mäta temperaturen. Vi vet ju alla att det är en dålig idé att göra, tänk om diskmaskinen är helt fylld med vatten!? Så kan det, som tidigare nämnt, vara enligt en av *På tal om universum*-författarna... 🤯
 
-Men den ursprungliga frågan kvarstår - varför är det så att *eko*-läget är mer energieffektivt än *snabba eko*-läget? Min tolkning av resultaten i denna artikel är enligt följande. Det går att göra avvägning mellan att diska under en kort tid med mycket vatten, eller diska under en längre tid med mindre vatten. Eftersom energiförbrukningen är kopplad mestadels till hur mycket vatten som måste värmas upp kommer det *snabba eko*-läget att förbruka mer energi än *eko*-läget, trots att det tar kortare tid. Nu har du blivit lite klokare - och kan imponera på alla under nästa fest med dina diskmaskinskunskaper! 
+Men den ursprungliga frågan kvarstår - varför är det så att *eko*-läget är mer energieffektivt än *snabba eko*-läget? Min tolkning av resultaten är enligt följande. Det går att göra en avvägning mellan att diska under en kort tid med mycket vatten, eller diska under en längre tid med lite vatten. Eftersom energiförbrukningen är kopplad mestadels till hur mycket vatten som måste värmas upp kommer det *snabba eko*-läget att förbruka mer energi än *eko*-läget, trots att det tar kortare tid. Nu har du blivit lite klokare - och kan imponera med dina diskmaskinskunskaper under nästa fest! 
 
 All kod som användes för analyserna i denna artikel finns att hämta på GitHub[^github_link].
 
