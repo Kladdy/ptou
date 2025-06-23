@@ -22,20 +22,20 @@ export const SearchProvider = ({ children }) => {
         searchDocumentsPath: 'search.json',
         defaultActions: [
           {
-            id: 'homepage',
-            name: 'Homepage',
+            id: 'hem',
+            name: 'Hem',
             keywords: '',
             shortcut: ['h', 'h'],
             section: 'Hem',
             perform: () => router.push('/'),
           },
           {
-            id: 'projects',
+            id: 'projekt',
             name: 'Projekt',
             keywords: '',
             shortcut: ['p'],
             section: 'Hem',
-            perform: () => router.push('/projects'),
+            perform: () => router.push('/projekt'),
           },
         ],
         onSearchDocumentsLoad(json) {
