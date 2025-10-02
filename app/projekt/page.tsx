@@ -13,7 +13,7 @@ export default function Projects() {
             Projekt
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            TODO: Showcase your projects with a hero image (16 x 9)
+            Nedan listas de projekt som På tal om universum roddar i:
           </p>
         </div>
         <div className="container py-12">
