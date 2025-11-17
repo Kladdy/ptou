@@ -68,7 +68,7 @@ Rationella tal
 
 Vi kan fortsätta med våra exempel om snacks. Det kan vara att en dag du kommer att få en lillebror, eller en lillasyster, och att det finns bara ett snack kvar i kylskåpet för pappan hade glömt att fixa några till. Då kommer vi göra så som mina föräldrar gjorde med mig och mina bröder. En av er får dela snacken i två delar och den andra får välja först. Om man är jättenoga kan man lyckas med att dela snacken exakt i två bitar men det väcker en fråga: Hur många snack har du då? Du har hälften av en. Eller du har ena halvan. Men en hel snack är dubbelt så mycket som hälften av en! Du har _en_ som är bara _halvan av en_! Och här landar vi på idén om rationella tal. De kan skrivas som en kvot av två heltal $T$ och $N$ i följande sätt:
 
-$ T/N, $
+$T/N,$
 
 där $T$ kallas för täljare och $N$ kallas för nämnare. Observera att alla heltal kan skrivas som ett rationella tal om man väljer $T$ vara heltal av intresse och då alltid väljer $N$ att vara lika med ett.  I våra exempel om snacks har vi heltal $T$ lika med ett och heltal $N$ lika med två. Nämnaren berättar oss hur många barn vi har och täljaren hur många delar av ett snack du kommer att få. Och eftersom du är en smart pojke är du förmodligen orolig för vad som händer när $N$ blir riktigt stor, men jag försäkrar dig, det är något du inte behöver oroa dig för. Ibland känss det som ett barn är tillräckligt. 
 
@@ -84,11 +84,11 @@ Någon dag när du är lite äldre, det måhända att jag eller din mamma ger di
 
 Längden på hypotenusan får vi enkelt från Pythagoras teorem som du kommer att lära dig troligen i förskolan. Eller? Jag har ingen aning vad de lär ut i skolorna nuförtiden, ännu mindre om sex år. Men någon gång kommer du lära dig det! Vad Pythagoras teorem säger är att för en rättvinklad triangel kvadraten av hypotenusan är summan av kvadrater för kateter:
 
-$ h^2 = k_1^2 + k_2^2 $,
+$h^2 = k_1^2 + k_2^2$,
 
 där $h$ är hypotenusans längd, $k_1$ är första katetens längd och $k_2$ är andra katetens längd. I våra exempel både $k_1$ och $k_2$ är lika med ett så vi kan skriva:
 
-$ h^2 = 2 \rightarrow h = 2^{(1/2)} = \sqrt{2}$
+$h^2 = 2 \rightarrow h = 2^{(1/2)} = \sqrt{2}$
 
 där symbolen $\sqrt{2}$ markerar en kvadratrot. Den du kommer troligen också lära dig i förskolan och om inte, då byter vi skolan! De här sakerna är ju elementära! Hur som helst, kan man skriva $\sqrt{2}$ som ett kvot mellan två heltal? Tyvärr inte. Låt oss gå genom ett klassisk motsägelsebevis för detta (Inom matematik måste man många gånger bevisa saker genom motsägelsebevis vilket har alltid stört mig oehört mycket. Kanske detta skulle vara ett ämne för ett framtida blogginlägg?! Sigge?! Magge?!). 
 
