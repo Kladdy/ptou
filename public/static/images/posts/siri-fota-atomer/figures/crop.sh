@@ -1,5 +1,5 @@
-magick light/Bild2.jpeg -crop 1040x590+20+20 light/Bild2_cropped.jpeg
-magick dark/Bild3.jpeg -crop 1040x590+20+20 dark/Bild3_cropped.jpeg
+magick light/Bild2.jpeg -crop 1040x450+20+100 light/Bild2_cropped.jpeg
+magick dark/Bild3.jpeg -crop 1040x450+20+100 dark/Bild3_cropped.jpeg
 
 magick light/Bild4.jpeg -crop 960x400+60+120 light/Bild4_cropped.jpeg
 magick dark/Bild5.jpeg -crop 960x400+60+120 dark/Bild5_cropped.jpeg    
